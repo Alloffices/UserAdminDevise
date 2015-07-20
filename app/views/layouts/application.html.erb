@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bingo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div>
+<% if user_signed_in? %>
+	<%= link_to "Home", root_path %>
+	<%= link_to "Logout", destroy_user_session_path, method: :delete, date: { confirm: "Are you sure?"} %>
+<% else %>
+	<%= link_to "Home", root_path %>
+	<%= link_to "Signin", new_user_session_path %>
+	<%= link_to "Signup", new_user_registration_path %>
+<% end %>
+</div>
+
+<div>
+	<p class="notice"><%= notice %></p>
+</div>
+<%= yield %>
+
+</body>
+</html>
